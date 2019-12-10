@@ -39,8 +39,6 @@ namespace ScraperDb
         private void button1_Click(object sender, EventArgs e)
         {
             Model1 m = new Model1();
-            m.Database.ExecuteSqlCommand("delete from dbo.HotelHeaders");
-            m.Database.ExecuteSqlCommand("delete from dbo.HotelPrices");
 
             var scrap = new ScraperProcessor();
 
@@ -125,6 +123,9 @@ namespace ScraperDb
             }
 
             Model1 model1 = new Model1();
+            model1.Database.ExecuteSqlCommand("delete from dbo.HotelPrices");
+            model1.Database.ExecuteSqlCommand("delete from dbo.HotelHeaders");
+
             model1.HotelHeaders.AddRange(hotelHeaders);
             model1.SaveChanges();
         }
